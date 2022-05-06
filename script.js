@@ -1,57 +1,53 @@
 // Assignment code here 
-var lowerCaseArr=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-var upperCaseArr=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-var numberArr=['1','2','3','4','5','6','7','8','9','0'] 
-var specialCharArr=['!','@','#','$','%','^','&','*','(',')','-','+','=']
+var passwordCharArr=[];
+var lowerCaseArr=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var upperCaseArr=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var numberArr=['1','2','3','4','5','6','7','8','9','0'] ;
+var specialCharArr=['!','@','#','$','%','^','&','*','(',')','-','+','='];
 
-function generatePassword () {
+var generateBtn = document.querySelector("#generate");
+
+function promptUser () {
     // prompt user for password length
-    const lengthEl=Number(window.prompt("How long would you like your password to be? Choose between 8-128 characters."))
-    if (lengthEl < 8 || lengthEl > 128) {
+     lengthEl=parseInt(window.prompt("How long would you like your password to be? Choose between 8-128 characters."))
+    if (isNaN(lengthEl) || lengthEl < 8 || lengthEl > 128) {
         window.alert("Please enter a number over 8 and below 128.")
+        promptUser()
     }
 
     // prompt user for lowercase letters
-    var addLower=window.prompt("Would you like to use lowercase letters?");
-    if (addLower === YES || addLower === yes) {
-         for (let i=1; i<=lengthEl; i++) {
-            let password=(Math.floor(Math.random) * lengthEl)
-         }
+    else if(confirm("Would you like to use lowercase letters?")); {
+        passwordCharArr=passwordCharArr.concat(lowerCaseArr);
     }
-    //if yes, include in password
     
     // prompt user for uppercase letters
-    var addUpper=window.prompt("Would you like to use uppercase letters?");
-    if (addUpper === YES || addUpper === yes) {
-        for (let i=1; i<lengthEl; i++) {
-            let password=(Math.floor(Math.random)*lengthEl)
-        }
-
+    if(confirm("Would you like to use uppercase letters?")); {
+        passwordCharArr=passwordCharArr.concat(upperCaseArr);
     }
-    //if yes, include in password
-    
     //prompt for numbers
-    var addNum=window.prompt("Would you like to use numbers?");
-    if (addNum === YES || addNum === yes){
-        let password=(Math.floor(Math.random)* lengthEL)
+    if(confirm("Would you like to use number?")); {
+        passwordCharArr=passwordCharArr.concat(numberArr);
     }
-    //if yes, include in password
-    
     //prompt for special characters
-    var addSpec=window.prompt("Would you like to use special characters?");
-    if (addSpec === YES || addSpec === yes) {
-        let password=(Math.floor(Math.random)* lengthEl)
+    if(confirm("Would you like to use special characters?")); {
+        passwordCharArr=passwordCharArr.concat(specialCharArr);
     }
-    //if yes, include in password
-    
+   return true 
+}
     // create password based on selected criteria
     
     // generate password
 
     // Get references to the #generate element
-    return value;
+
+function generatePassword(){
+    for(var i=0; i<lengthEl; i++) {
+        var randomChar=Math.floor(Math.random()*passwordCharArr.length);
+        password=password + passwordCharArr[randomChar];
+    }
+        return password
+    
 }
-var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
@@ -60,6 +56,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
-writePassword()
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+ promptUser ()
+ generatePassword ()
