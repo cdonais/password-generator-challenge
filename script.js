@@ -17,7 +17,7 @@ function promptUser () {
     }
 
     // prompt user for lowercase letters
-    else if(confirm("Would you like to use lowercase letters?")); {
+     if(confirm("Would you like to use lowercase letters?")); {
         passwordCharArr=passwordCharArr.concat(lowerCaseArr);
     }
 
@@ -27,7 +27,7 @@ function promptUser () {
         passwordCharArr=passwordCharArr.concat(upperCaseArr);
     }
     //prompt for numbers
-    if(confirm("Would you like to use number?")); {
+    if(confirm("Would you like to use numbers?")); {
         passwordCharArr=passwordCharArr.concat(numberArr);
     }
     //prompt for special characters
@@ -60,5 +60,5 @@ function writePassword() {
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
- promptUser ()
- generatePassword ()
+promptUser ()
+generatePassword ()
