@@ -9,8 +9,9 @@ var generateBtn = document.querySelector("#generate");
 
 function promptUser () {
     // prompt user for password length
-     lengthEl=parseInt(window.prompt("How long would you like your password to be? Choose between 8-128 characters."))
-    if (isNaN(lengthEl) || lengthEl < 8 || lengthEl > 128) {
+     lengthEl=(window.prompt("How long would you like your password to be? Choose between 8-128 characters."))
+        console.log(lengthEl);
+     if (lengthEl < 8 || lengthEl > 128) {
         window.alert("Please enter a number over 8 and below 128.")
         promptUser()
     }
@@ -19,6 +20,7 @@ function promptUser () {
     else if(confirm("Would you like to use lowercase letters?")); {
         passwordCharArr=passwordCharArr.concat(lowerCaseArr);
     }
+
     
     // prompt user for uppercase letters
     if(confirm("Would you like to use uppercase letters?")); {
@@ -32,7 +34,6 @@ function promptUser () {
     if(confirm("Would you like to use special characters?")); {
         passwordCharArr=passwordCharArr.concat(specialCharArr);
     }
-   return true 
 }
     // create password based on selected criteria
     
@@ -41,6 +42,7 @@ function promptUser () {
     // Get references to the #generate element
 
 function generatePassword(){
+    var password=""
     for(var i=0; i<lengthEl; i++) {
         var randomChar=Math.floor(Math.random()*passwordCharArr.length);
         password=password + passwordCharArr[randomChar];
